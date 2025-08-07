@@ -1,0 +1,106 @@
+<div class="content-container container">
+
+  <div class="notice-container">
+    <h1>Notice</h1>
+    <p>Le tableau suivant contient tous les massages enregistrés et qui s'affichent dans la section "Massages" de la
+      page éponyme sur le site public.</p>
+    <p>Il est possible d'afficher toutes les informations relatives à un massage en particulier à l'aide du bouton (+),
+      et également de modifier ou supprimer un massage de la liste.</p>
+  </div>
+
+  <div class="add-btn-container">
+    <button class="green-btn" [routerLink]="['./new']">Ajouter un nouveau massage</button>
+  </div>
+
+  <hr>
+  <h2>Liste des massages</h2>
+  <div class="item-container" *ngFor="let massage of massages">
+
+    <div class="item-header">
+
+      <div class="item-display-btn">
+        <button class="display-btn" (click)="displayDetails(massage.massageID)"
+          id="display-btn-{{massage.massageID}}">+</button>
+        <button class="hide-btn" (click)="hideDetails(massage.massageID)" id="hide-btn-{{massage.massageID}}">-</button>
+      </div>
+
+      <div class="item-title">
+        <p>{{ massage.massageName }} ({{ massage.tags}})</p>
+      </div>
+
+      <div class="item-actions">
+        <button class="blue-btn" [routerLink]="[`./edit/${massage.massageID}`]">Modifier</button>
+      </div>
+
+      <div class="item-actions">
+        <button class="red-btn" (click)="openConfirmModal(massage.massageID)">Supprimer</button>
+      </div>
+    </div>
+
+    <div class="item-details" id="{{ massage.massageID }}">
+
+      <h5>Description</h5>
+      <p>{{ massage.description }}</p>
+      <h5>Contenu supplémentaire</h5>
+      <p>{{ massage.content }}</p>
+      <h5>Image associée</h5>
+      <img src="{{environmentUrl}}{{ massage.imageUrl }}" alt="Image de massage {{ massage.massageName }}"
+        class="treatment-image" />
+
+    </div>
+
+  </div>
+
+  <br>
+
+  <h2>Liste des soins</h2>
+  <div class="item-container" *ngFor="let soin of soins">
+
+    <div class="item-header">
+
+      <div class="item-display-btn">
+        <button class="display-btn" (click)="displayDetails(soin.massageID)"
+          id="display-btn-{{soin.massageID}}">+</button>
+        <button class="hide-btn" (click)="hideDetails(soin.massageID)" id="hide-btn-{{soin.massageID}}">-</button>
+      </div>
+
+      <div class="item-title">
+        <p>{{ soin.massageName }} ({{ soin.tags}})</p>
+      </div>
+
+      <div class="item-actions">
+        <button class="blue-btn" [routerLink]="[`./edit/${soin.massageID}`]">Modifier</button>
+      </div>
+
+      <div class="item-actions">
+        <button class="red-btn" (click)="openConfirmModal(soin.massageID)">Supprimer</button>
+      </div>
+    </div>
+
+    <div class="item-details" id="{{ soin.massageID }}">
+
+      <h5 *ngIf="soin.target">Cible</h5>
+      <p *ngIf="soin.target">{{ soin.target }}</p>
+      <h5>Description</h5>
+      <p>{{ soin.description }}</p>
+      <h5>Contenu supplémentaire</h5>
+      <p>{{ soin.content }}</p>
+      <h5>Image associée</h5>
+      <img src="{{environmentUrl}}{{ soin.imageUrl }}" alt="Image de massage {{ soin.massageName }}"
+        class="treatment-image" />
+
+    </div>
+
+  </div>
+
+  <div class="modal-overlay" *ngIf="showModal">
+    <div class="modal-box">
+      <p>Êtes-vous sûr de vouloir supprimer cette prestation ?</p>
+      <div class="modal-buttons">
+        <button class="red-btn" (click)="onConfirmDelete()">Confirmer</button>
+        <button class="grey-btn" (click)="onCancelDelete()">Annuler</button>
+      </div>
+    </div>
+  </div>
+
+</div>

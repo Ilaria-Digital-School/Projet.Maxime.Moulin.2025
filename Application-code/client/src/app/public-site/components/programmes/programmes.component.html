@@ -1,0 +1,29 @@
+<div class="programs-container">
+
+  <div *ngFor="let program of groupedPrograms" class="programs-card">
+
+    <div class="programs-card-title">
+      <h3>Programme {{ program.programName }}</h3>
+    </div>
+
+    <p *ngIf="program.newPrice != null">
+      <span class="programs-new-price">{{ program.newPrice }} € </span>
+      <span class="programs-old-price">600 €</span>
+    </p>
+
+    <div>
+      <ul>
+        <li *ngFor="let massage of program.massages">
+          {{ massage.massageName || massage.altMassage }} x{{ massage.quantity }}
+        </li>
+      </ul>
+    </div>
+
+    <div class="programs-btn">
+      <button class="green-btn" [routerLink]="['/reservation']" target="_self">Réserver<span>&nbsp;
+          &#10095;</span></button>
+    </div>
+
+  </div>
+
+</div>

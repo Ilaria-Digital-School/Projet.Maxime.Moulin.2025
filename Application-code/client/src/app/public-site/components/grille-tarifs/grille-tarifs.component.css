@@ -1,0 +1,91 @@
+table {
+  table-layout: fixed;
+  width: 80%;
+  margin: 0 auto;
+}
+
+table th,
+table td {
+  border: 1px solid var(--theme-color-green);
+  padding: 8px 20px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+table thead th {
+  background-color: var(--theme-color-green-light);
+}
+
+table tr:first-child th:first-child,
+table tr:nth-child(1) td:first-child {
+  border: none;
+  background-color: var(--theme-color-white);
+}
+
+.title {
+  font-weight: bold;
+}
+
+.price {
+  color: var(--theme-color-green);
+    font-size: 1.1em;
+}
+
+.old-price {
+  position: relative;
+  color: var(--theme-color-green-light);
+}
+
+.old-price::after {
+  content: '';
+  position: absolute;
+  top: 55%;
+  left: 0;
+  right: 0;
+  border-top: 1px solid var(--theme-color-black);
+
+  -webkit-transform: rotate(-10deg);
+  -moz-transform: rotate(-10deg);
+  -ms-transform: rotate(-10deg);
+  -o-transform: rotate(-10deg);
+  transform: rotate(-10deg);
+}
+
+@media screen and (max-width: 1200px) {
+  table {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  table {
+    font-size: 0.9em;
+  }
+
+  table th,
+  table td {
+    padding: 4px 10px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  table {
+    font-size: 0.8em;
+  }
+
+  table th,
+  table td {
+    padding: 2px 5px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  table {
+    font-size: 0.7em;
+  }
+
+  table th,
+  table td {
+    padding: 1px 2px;
+  }
+}

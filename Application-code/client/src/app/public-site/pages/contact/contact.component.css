@@ -1,0 +1,39 @@
+/* ==== MAIN ==== */
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    row-gap: 20px;
+}
+
+/* ==== HEADER ==== */
+
+.header-image-container {
+    background-image: url(/images/pageContact/lilas-bouquet-main.webp);
+    background-size: cover;
+    background-position: 50% 20%;
+}
+
+.contact-text {
+    text-align: center;
+}
+
+/* RESPONSIVE */
+@media screen and (max-width: 768px) {   
+
+    .form-container {
+        margin: 20px;
+    }
+
+    .contactForm {
+        min-width: 100%;
+        max-width: 100%;
+    }
+    
+}
+
+

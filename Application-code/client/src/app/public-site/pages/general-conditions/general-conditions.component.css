@@ -1,0 +1,33 @@
+/* MAIN */
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    row-gap:20px;
+}
+
+/* HEADER */
+
+.header-image-container {
+    background-image: url(/images/pageAPropos/lilas-papillon.jpg);
+    background-size: cover;
+    background-position: 50% 50%;
+}
+
+/* CORPS DE TEXTE */
+.text-container {
+    padding: 0 15px;
+    margin: 30px auto;
+}
+
+.text-container h2 {
+    color: var(--theme-color-green);
+    text-align: left;
+    margin: 10px 0;
+    font-size: 2rem;
+    font-family: Arial, Helvetica, sans-serif;
+}

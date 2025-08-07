@@ -1,0 +1,59 @@
+      <!-- Documents : brochure et carte des massages -->
+      <div class="docs-container-column">
+
+        <!-- Brochure -->
+        <div class="document">
+          <h3>Brochure</h3>
+
+          <div class="document-image">
+            <img loading="lazy" src="/images/docModal/brochure-aperçu.webp" alt="Brochure Au Coeur des Lilas" (click)="displayBrochure()">
+          </div>
+
+          <a class="green-link-btn" href="docs/Au coeur des Lilas - Brochure.pdf" target="_blank"
+            title="Télécharger la brochure" download="Au coeur des Lilas - Brochure.pdf">Télécharger la brochure</a>
+        </div>
+
+        <!-- Carte des massages -->
+        <div class="document">
+          <h3>Carte des massages</h3>
+
+          <div class="document-image">
+            <img loading="lazy" src="/images/docModal/carte-des-massages-aperçu.webp" alt="Carte des massages Au Coeur des Lilas"
+              (click)="displayCarte()">
+          </div>
+
+          <a class="green-link-btn" href="docs/Au coeur des Lilas - Carte des massages.pdf" target="_blank"
+            title="Télécharger la carte des massages" download="Au coeur des Lilas - Carte des massages.pdf">
+            Télécharger la carte des massages</a>
+        </div>
+
+        <!-- Modal pour la consultation des documents -->
+        <div id="documentModal" class="document-modal">
+
+          <!-- The Close Button -->
+          <span class="close">&times;</span>
+
+          <!-- Slideshow pour la brochure -->
+          <div class="document-slideshow" id="documentSlideshow">
+
+            <div class="prev-broch" id="prev-broch" (click)="plusSlidesDocument(-1)">&#10094;</div>
+
+            <div class="document-slide">
+              <img loading="lazy" class="document-modal-content" src="/images/docModal/brochure-1.webp" alt="Brochure - Page 1">
+            </div>
+
+            <div class="document-slide">
+              <img loading="lazy" class="document-modal-content" src="/images/docModal/brochure-2.webp" alt="Brochure - Page 2">
+            </div>
+
+            <div class="next-broch" id="next-broch" (click)="plusSlidesDocument(1)">&#10095;</div>
+
+          </div>
+
+          <!-- Modal pour Carte des massages -->
+          <img loading="lazy" class="document-modal-content" id="documentModalCarte" src="/images/docModal/carte-des-massages.webp"
+            alt="Cartes des massages">
+
+        </div>
+
+      </div>

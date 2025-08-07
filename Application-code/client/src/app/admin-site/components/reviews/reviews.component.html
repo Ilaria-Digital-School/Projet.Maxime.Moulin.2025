@@ -1,0 +1,47 @@
+<div class="content-container container">
+
+  <div class="notice-container">
+    <h1>Notice</h1>
+    <p>Le tableau suivant contient tous les avis clients qui sont affichés sur la page "Accueil" sur le site public.</p>
+    <p>Il est possible d'ajouter, de modifier ou supprimer un avis de la liste.</p>
+  </div>
+
+  <div class="add-btn-container">
+    <button class="green-btn" [routerLink]="['./new']">Ajouter un nouvel avis</button>
+  </div>
+
+  <hr>
+
+  <div class="item-container" *ngFor="let review of reviews">
+
+    <div class="item-header">
+
+      <div class="item-title">
+        <h5>{{ review.massageName }} ({{ review.reviewAuthor}})</h5>
+      </div>
+
+      <div class="item-actions">
+        <button class="blue-btn" [routerLink]="[`./edit/${review.reviewID}`]">Modifier</button>
+      </div>
+
+      <div class="item-actions">
+        <button class="red-btn" (click)="openConfirmModal(review.reviewID)">Supprimer</button>
+      </div>
+    </div>
+
+    <div>
+      <p class="review-text">{{ review.reviewText }}</p>
+    </div>
+
+  </div>
+
+  <div class="modal-overlay" *ngIf="showModal">
+    <div class="modal-box">
+      <p>Êtes-vous sûr de vouloir supprimer cet avis ?</p>
+      <div class="modal-buttons">
+        <button class="red-btn" (click)="onConfirmDelete()">Confirmer</button>
+        <button class="grey-btn" (click)="onCancelDelete()">Annuler</button>
+      </div>
+    </div>
+  </div>
+</div>

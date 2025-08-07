@@ -1,0 +1,93 @@
+/* ==== MAIN ==== */
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    row-gap: 20px;
+}
+
+/* ==== HEADER ==== */
+
+.header-image-container {
+    background-image: url(/images/pageCarteCadeau/lilas-bouquet-pot.webp);
+    background-size: cover;
+    background-position: 50% 0%;
+}
+
+.contact-text {
+    text-align: center;
+}
+
+/* ==== INFORMATIONS ==== */
+.giftCard-container {
+    padding: 0 20px;
+    margin: 30px auto;
+}
+
+.giftCard-image {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    border-radius: 10px;    
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    float: right;
+    margin-left: 30px;
+}
+
+.giftCard-container2 {
+    padding: 0 20px;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* ==== FORMULAIRE ==== */
+.giftCardForm h6 {
+    color: var(--theme-color-green);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.duration-title, .giftCardType-title {
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 10px !important;
+}
+
+.city-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.city-group :nth-child(2) {
+    width: 100%;
+}
+
+/* RESPONSIVE */
+@media screen and (max-width: 768px) {   
+
+    .giftCard-container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0 10px;
+    }
+
+    .giftCard-image {
+        margin-left: 0;
+        margin-bottom: 20px;
+    }
+
+    .form-container {
+        margin: 20px;
+    }
+
+    .giftCardForm {
+        min-width: 100%;
+        max-width: 100%;
+    }    
+}

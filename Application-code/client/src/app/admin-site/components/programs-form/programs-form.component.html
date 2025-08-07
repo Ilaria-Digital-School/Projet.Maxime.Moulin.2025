@@ -1,0 +1,106 @@
+<div class="content-container container">
+
+  <h2 *ngIf="mode === 'add'">Ajouter un programme</h2>
+  <h2 *ngIf="mode === 'edit'">Modifier un programme</h2>
+
+  <form class="admin-form-container" [formGroup]="programForm" (ngSubmit)="onSubmit()">
+
+    <div class="admin-form-section">
+      <label for="programName">Nom du programme</label>
+      <p class="help-text">Exemple : "Sportif" ou "Détox / Spécial Endométriose"</p>
+      <input type="text" formControlName="programName" id="programName" />
+      <div class="error-message"
+        *ngIf="programForm.get('programName')?.touched && programForm.get('programName')?.value">
+        <span *ngIf="programForm.get('programName')?.errors?.['required']">Le champ est requis.</span>
+        <span *ngIf="programForm.get('programName')?.errors?.['minlength']">Le nom doit contenir au moins 3
+          caractères.</span>
+        <span *ngIf="programForm.get('programName')?.errors?.['maxlength']">Le nom doit contenir moins de 30
+          caractères</span>
+        <span *ngIf="programForm.get('programName')?.errors?.['pattern']">Le nom ne doit contenir que des lettres,
+          chiffres,
+          espaces, et caractères de ponctuation.</span>
+      </div>
+    </div>
+
+    <div>
+      <input type="checkbox" formControlName="priceActive" id="priceActive" />
+      <label for="priceActive">&nbsp;Activer le prix personnalisé</label>
+    </div>
+
+    <div class="admin-form-section" *ngIf="programForm.get('priceActive')?.value">
+      <label for="newPrice">Prix personnalisé du programme (€)</label>
+      <input type="number" formControlName="newPrice" id="newPrice"
+        placeholder="Laisser vide si pas de changement de prix" />
+      <div class="error-message" *ngIf="programForm.get('newPrice')?.touched && programForm.get('newPrice')?.value">
+        <span *ngIf="programForm.get('newPrice')?.errors?.['min']">Le prix doit être supérieur à 0€.</span>
+        <span *ngIf="programForm.get('newPrice')?.errors?.['max']">Le prix doit être inférieur à 2000€.</span>
+      </div>
+    </div>
+
+    <h3>Massages et soins associés</h3>
+    <p class="help-text">Sélectionnez les massage(s) ou soin(s) associé(s) à ce programme.<br>Vous pouvez également
+      ajouter une
+      ligne personnalisée (par exemple "Combinaison d'un massage au choix et de Tui Na").</p>
+
+    <div class="admin-form-array" formArrayName="massages">
+      <div style="margin-bottom: 40px;" *ngFor="let massage of massages.controls; let i = index" [formGroupName]="i">
+        <hr style="margin: 20px auto; width:80%;">
+        <div class="admin-form-group">
+          <div class="admin-form-section">
+            <label for="massageID-{{i}}">Massage ou soin n°{{i + 1}}</label>
+            <select formControlName="massageID" name="massageID-{{i}}" id="massageID-{{i}}">
+              <option value="init">Sélectionner un massage ou soin</option>
+              <option *ngFor="let massageName of massagesNameList" [value]="massageName.massageID">
+                {{ massageName.massageName }}
+              </option>
+              <option value="perso">Ligne personnalisée</option>
+            </select>
+            <input style="margin-top: 10px;" type="text" formControlName="altMassage" id="altMassage"
+              *ngIf="massage.get('massageID')?.value === 'perso'" placeholder="Entrez votre texte personnalisé" />
+            <div class="error-message" *ngIf="massage.get('massageID')?.touched && massage.get('massageID')?.value">
+              <span *ngIf="massage.get('massageID')?.errors?.['required']">Veuillez sélectionner un massage dans la
+                liste.</span>
+              <span *ngIf="massage.get('massageID')?.errors?.['invalidMassage']">Veuillez sélectionner un massage dans
+                la
+                liste.</span>
+              <span *ngIf="massage.get('altMassage')?.errors?.['minlength']">Un nom ou un descriptif est requis.</span>
+              <span *ngIf="massage.get('altMassage')?.errors?.['maxlength']">Le nom ou le descriptif doit contenir moins
+                de
+                100 caractères.</span>
+              <span *ngIf="massage.get('altMassage')?.errors?.['pattern']">Le nom ou le descriptif ne doit contenir que
+                des
+                lettres, chiffres, espaces, et caractères de ponctuation.</span>
+            </div>
+          </div>
+
+          <div class="admin-form-section">
+            <label for="quantity-{{i}}">Quantité</label>
+            <input type="number" formControlName="quantity" min="1" max="10" name="quantity-{{i}}"
+              id="quantity-{{i}}" />
+            <div class="error-message" *ngIf="massage.get('quantity')?.touched && massage.get('quantity')?.value">
+              <span *ngIf="massage.get('quantity')?.errors?.['min']">La quantité doit être au moins 1.</span>
+              <span *ngIf="massage.get('quantity')?.errors?.['max']">La quantité ne peut pas dépasser 10.</span>
+              <span *ngIf="massage.get('quantity')?.errors?.['pattern']">La quantité doit être un nombre entier.</span>
+            </div>
+          </div>
+
+          <button class="red-btn" type="button" (click)="removeMassage(i)" *ngIf="massages.length > 1">X</button>
+
+        </div>
+      </div>
+    </div>
+    <button class="blue-btn" type="button" (click)="addMassage()" *ngIf="massages.length < 6">Ajouter un
+      massage</button>
+
+    <hr />
+
+    <div class="d-flex gap-3">
+      <button class="green-btn" type="submit"
+        [disabled]="massages.length === 0">{{ mode === 'edit' ? 'Mettre à jour' : 'Ajouter le programme' }}</button>
+      <button class="green-btn" type="button" (click)="onCancel()">Annuler</button>
+    </div>
+
+  </form>
+
+  <p class="error-message" *ngIf="message">{{ message }}</p>
+</div>

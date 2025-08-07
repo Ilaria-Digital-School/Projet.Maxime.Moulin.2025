@@ -1,0 +1,53 @@
+<div class="content-container container">
+
+
+  <h2 *ngIf="mode === 'add'">Ajouter un avis</h2>
+  <h2 *ngIf="mode === 'edit'">Modifier un avis</h2>
+
+  <form class="admin-form-container" [formGroup]="reviewForm" (ngSubmit)="onSubmit()">
+    <div class="admin-form-section">
+      <label for="massageID">Massage</label>
+      <select type="number" formControlName="massageID">
+        <option value="" selected>-- Sélectionner un massage --</option>
+        <option *ngFor="let massage of massages" [value]="massage.massageID">{{ massage.massageName }}</option>
+      </select>
+    </div>
+
+    <div class="admin-form-section">
+      <label for="reviewText">Message de l'avis</label>
+      <textarea formControlName="reviewText"></textarea>
+      <div class="error-message" *ngIf="reviewForm.get('reviewText')?.touched && reviewForm.get('reviewText')?.value">
+        <span *ngIf="reviewForm.get('reviewText')?.errors?.['required']">Le champ est requis.</span>
+        <span *ngIf="reviewForm.get('reviewText')?.errors?.['minlength']">L'avis doit contenir au moins 10
+          caractères.</span>
+        <span *ngIf="reviewForm.get('reviewText')?.errors?.['maxlength']">L'avis est trop long (au-dessus de 1000
+          caractères)</span>
+        <span *ngIf="reviewForm.get('reviewText')?.errors?.['pattern']">Le nom ne doit contenir que des lettres,
+          chiffres,
+          espaces, et caractères de ponctuation.</span>
+      </div>
+    </div>
+
+    <div class="admin-form-section">
+      <label for="reviewAuthor">Auteur</label>
+      <input type="text" formControlName="reviewAuthor" />
+      <div class="error-message" *ngIf="reviewForm.get('reviewAuthor')?.touched && reviewForm.get('reviewAuthor')?.value">
+        <span *ngIf="reviewForm.get('reviewAuthor')?.errors?.['required']">Le champ est requis.</span>
+        <span *ngIf="reviewForm.get('reviewAuthor')?.errors?.['minlength']">Le nom doit contenir au moins 2
+          caractères.</span>
+        <span *ngIf="reviewForm.get('reviewAuthor')?.errors?.['maxlength']">Le nom ne doit pas dépasser 20 caractères.</span>
+        <span *ngIf="reviewForm.get('reviewAuthor')?.errors?.['pattern']">Le nom ne doit contenir que des lettres,
+          chiffres,
+          espaces, et caractères de ponctuation.</span>
+      </div>
+    </div>
+
+    <div class="d-flex gap-3">
+      <button class="green-btn" type="submit">{{ mode === 'edit' ? 'Mettre à jour' : 'Ajouter' }}</button>
+      <button class="green-btn" type="button" (click)="onCancel()">Annuler</button>
+    </div>
+
+  </form>
+
+  <p class="error-message" *ngIf="message">{{ message }}</p>
+</div>

@@ -1,0 +1,113 @@
+<div class="content-container container">
+
+
+  <h2 *ngIf="mode === 'add'">Ajouter un massage ou soin</h2>
+  <h2 *ngIf="mode === 'edit'">Modifier un massage ou soin</h2>
+
+  <form class="admin-form-container" [formGroup]="massageForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+    <div class="admin-form-section">
+      <label for="category">Type de prestation</label>
+      <select type="text" formControlName="category">
+        <option value="" selected>-- Sélectionner un type de prestation --</option>
+        <option value="massage">Massage</option>
+        <option value="soin">Soin spécifique</option>
+      </select>
+      <div class="error-message" *ngIf="massageForm.get('category')?.touched && massageForm.get('category')?.value">
+        <span *ngIf="massageForm.get('category')?.errors?.['required']">Veuillez sélectionner un type de
+          prestation.</span>
+      </div>
+    </div>
+
+    <div class="admin-form-section">
+      <label for="massageName">Nom de la prestation</label>
+      <p class="help-text">Exemple : "Massage Californien" ou "Soin Tui Na"</p>
+      <input type="text" formControlName="massageName" />
+      <div class="error-message"
+        *ngIf="massageForm.get('massageName')?.touched && massageForm.get('massageName')?.value">
+        <span *ngIf="massageForm.get('massageName')?.errors?.['required']">Le nom de la prestation est requis.</span>
+        <span *ngIf="massageForm.get('massageName')?.errors?.['minlength']">Le nom doit contenir au moins 5
+          caractères.</span>
+        <span *ngIf="massageForm.get('massageName')?.errors?.['maxlength']">Le nom ne doit pas dépasser 50
+          caractères.</span>
+        <span *ngIf="massageForm.get('massageName')?.errors?.['pattern']">Le nom ne doit contenir que des lettres, des
+          chiffres, des espaces et certains caractères spéciaux.</span>
+      </div>
+    </div>
+
+    <div class="admin-form-section">
+      <label for="tags">Tags</label>
+      <p class="help-text">Exemple : "Relaxation & Enveloppement"</p>
+      <input type="text" formControlName="tags" />
+      <div class="error-message" *ngIf="massageForm.get('tags')?.touched && massageForm.get('tags')?.value">
+        <span *ngIf="massageForm.get('tags')?.errors?.['required']">Les tags sont requis.</span>
+        <span *ngIf="massageForm.get('tags')?.errors?.['minlength']">Les tags doivent contenir au moins 2
+          caractères.</span>
+        <span *ngIf="massageForm.get('tags')?.errors?.['maxlength']">Les tags ne doivent pas dépasser 100
+          caractères.</span>
+        <span *ngIf="massageForm.get('tags')?.errors?.['pattern']">Les tags ne doivent contenir que des lettres, des
+          chiffres, des espaces et certains caractères spéciaux.</span>
+      </div>
+    </div>
+
+    <div class="admin-form-section" *ngIf="massageForm.get('category')?.value === 'soin'">
+      <label for="target">Cible (si applicable, pour les soins uniquement)</label>
+      <p class="help-text">Non obligatoire - Exemple : "Visage", "Pieds" ou une catégorie de clientèle</p>
+      <input type="text" formControlName="target" />
+      <div class="error-message" *ngIf="massageForm.get('target')?.touched && massageForm.get('target')?.value">
+        <span *ngIf="massageForm.get('target')?.errors?.['maxlength']">La cible ne doit pas dépasser 30
+          caractères.</span>
+        <span *ngIf="massageForm.get('target')?.errors?.['pattern']">La cible ne doit contenir que des lettres, des
+          chiffres, des espaces et certains caractères spéciaux.</span>
+      </div>
+    </div>
+
+    <div class="admin-form-section">
+      <label for="description">Description</label>
+      <p class="help-text">Il s'agit du texte qui s'affiche en permanence sur l'onglet de la prestation.</p>
+      <textarea formControlName="description"></textarea>
+      <div class="error-message"
+        *ngIf="massageForm.get('description')?.touched && massageForm.get('description')?.value">
+        <span *ngIf="massageForm.get('description')?.errors?.['required']">La description est requise.</span>
+        <span *ngIf="massageForm.get('description')?.errors?.['minlength']">La description doit contenir au moins 10
+          caractères.</span>
+        <span *ngIf="massageForm.get('description')?.errors?.['maxlength']">La description ne doit pas dépasser 1000
+          caractères.</span>
+        <span *ngIf="massageForm.get('description')?.errors?.['pattern']">La description ne doit contenir que des
+          lettres, des chiffres, des espaces et certains caractères spéciaux.</span>
+      </div>
+    </div>
+
+    <div class="admin-form-section">
+      <label for="content">Détails supplémentaires</label>
+      <p class="help-text">Il s'agit des informations supplémentaires consultables en cliquant sur "Afficher plus..."
+      </p>
+      <textarea formControlName="content"></textarea>
+      <div class="error-message" *ngIf="massageForm.get('content')?.touched && massageForm.get('content')?.value">
+        <span *ngIf="massageForm.get('content')?.errors?.['required']">Le contenu est requis.</span>
+        <span *ngIf="massageForm.get('content')?.errors?.['minlength']">Le contenu doit contenir au moins 10
+          caractères.</span>
+        <span *ngIf="massageForm.get('content')?.errors?.['maxlength']">Le contenu ne doit pas dépasser 3000
+          caractères.</span>
+        <span *ngIf="massageForm.get('content')?.errors?.['pattern']">Le contenu ne doit contenir que des lettres, des
+          chiffres, des espaces et certains caractères spéciaux.</span>
+      </div>
+    </div>
+
+    <div class="admin-form-section">
+      <label for="newImage">Image</label>
+      <p class="help-text">L'image doit être sous format .png, avoir les dimensions 310px par 310px et être optimisée
+        via le site <a href="https://squoosh.app/" title="Application Squoosh" target="_blank">Squoosh</a>.</p>
+      <img *ngIf="mode === 'edit'" [src]="displayedImageUrl" alt="Image de la prestation" class="treatment-image" />
+      <input type="file" accept="image/png" name="newImage" (change)="onFileSelected($event)" />
+      <img *ngIf="previewUrl" [src]="previewUrl" alt="Aperçu de l'image" class="treatment-image" />
+    </div>
+
+    <div class="d-flex gap-3">
+      <button class="green-btn" type="submit">{{ mode === 'edit' ? 'Mettre à jour' : 'Ajouter' }}</button>
+      <button class="green-btn" type="button" (click)="onCancel()">Annuler</button>
+    </div>
+
+  </form>
+
+  <p class="error-message" *ngIf="message">{{ message }}</p>
+</div>

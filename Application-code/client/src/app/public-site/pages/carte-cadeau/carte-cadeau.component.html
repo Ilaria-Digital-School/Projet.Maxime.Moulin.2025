@@ -1,0 +1,201 @@
+<main>
+
+  <!-- Bandeau-titre -->
+  <div class="header-image-container container-fluid">
+    <h1>Le plaisir d'offrir</h1>
+  </div>
+
+  <!-- Informations -->
+  <div class="container giftCard-container">
+
+    <img src="/images/pageCarteCadeau/carte-cadeau.webp" alt="Carte cadeau" class="giftCard-image">
+    <p>Vous souhaitez offrir un moment de mieux-être à une personne qui vous est chère ?</p>
+    <p>La carte cadeau est disponible sous format papier en finition mate, dans une enveloppe, ou en format digital
+      (envoyée sous format PDF par email).</p>
+    <p>Vous choisissez le temps de prestation, et la personne qui recevra la carte choisira elle-même le massage qui
+      lui convient le jour du rendez-vous.</p>
+    <p>Après avoir complété le formulaire ci-dessous, je prendrai contact avec vous pour finaliser l'achat de la carte
+      cadeau. La carte vous sera ensuite envoyée selon le format choisi.</p>
+  </div>
+  
+  <div class="container giftCard-container2">
+  <p>Pour les détenteurs de cartes cadeaux, je vous remercie de vous munir de la carte cadeau le jour J en échange
+    du soin.</p>
+  </div>
+
+  <!-- Demande de carte-cadeau -->
+
+  <div class="form-container container">
+    <h2>Demander une carte cadeau</h2>
+
+    <div class="popup-message success" *ngIf="requestSent">
+      ✅ Votre demande a bien été envoyée !
+    </div>
+
+    <div class="popup-message error" *ngIf="requestError">
+      ❌ Une erreur est survenue lors de l'envoi du message.
+    </div>
+
+    <form class="giftCardForm" (ngSubmit)="onSubmit()" [formGroup]="giftCardForm">
+
+      <div class="form-group">
+        <label class="giftCardType-title" for="giftCardType">Choisissez le format de la carte cadeau</label>
+        <select id="giftCardType" formControlName="giftCardType" required>
+          <option value="" disabled selected>Choisissez un format de carte</option>
+          <option value="papier">Format papier - Envoi par courrier</option>
+          <option value="numérique">Format digital - Envoi par email</option>
+        </select>
+        <div class="error-message"
+          *ngIf="giftCardForm.get('duration')?.valid && giftCardForm.get('giftCardType')?.invalid && (giftCardForm.get('giftCardType')?.value === '')">
+          <span *ngIf="giftCardForm.get('giftCardType')?.errors?.['required']">Merci de faire un choix</span>
+        </div>
+      </div>
+
+      <hr>
+
+      <div class="form-group">
+        <label class="duration-title" for="duration">Choisissez le temps de prestation</label>
+        <select id="duration" formControlName="duration" required>
+          <option value="" disabled selected>Choisissez une durée</option>
+          <option value="1H">1h - 60 €</option>
+          <option value="1H30">1h30 - 80 €</option>
+          <option value="2H">2h - 100€</option>
+        </select>
+        <div class="error-message"
+          *ngIf="giftCardForm.get('fromName')?.valid && giftCardForm.get('duration')?.invalid && (giftCardForm.get('duration')?.value === '')">
+          <span *ngIf="giftCardForm.get('duration')?.errors?.['required']">Merci de faire un choix</span>
+        </div>
+      </div>
+
+      <hr>
+
+      <h6>Les informations suivantes apparaîtront sur la carte cadeau.</h6>
+
+      <div class="form-group">
+        <label for="toName">Pour : </label>
+        <input type="text" id="toName" formControlName="toName" required placeholder="Destinataire de la carte">
+        <div class="error-message" *ngIf="giftCardForm.get('toName')?.touched && giftCardForm.get('toName')?.value">
+          <span *ngIf="giftCardForm.get('toName')?.errors?.['required']">Le champ est requis.</span>
+          <span *ngIf="giftCardForm.get('toName')?.errors?.['minlength']">Le nom doit contenir au moins 2
+            caractères.</span>
+          <span *ngIf="giftCardForm.get('toName')?.errors?.['maxlength']">Le nom ne doit pas dépasser 50
+            caractères.</span>
+          <span *ngIf="giftCardForm.get('toName')?.errors?.['pattern']">Le nom ne doit contenir que des lettres,
+            espaces, apostrophes ou tirets.</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="fromName">De la part de : </label>
+        <input type="text" id="fromName" formControlName="fromName" required placeholder="Votre nom, prénom ou pseudo">
+        <div class="error-message" *ngIf="giftCardForm.get('fromName')?.touched && giftCardForm.get('fromName')?.value">
+          <span *ngIf="giftCardForm.get('fromName')?.errors?.['required']">Le nom est requis.</span>
+          <span *ngIf="giftCardForm.get('fromName')?.errors?.['minlength']">Le nom doit contenir au moins 2
+            caractères.</span>
+          <span *ngIf="giftCardForm.get('toName')?.errors?.['maxlength']">Le nom ne doit pas dépasser 50
+            caractères.</span>
+          <span *ngIf="giftCardForm.get('fromName')?.errors?.['pattern']">Le nom ne doit contenir que des lettres,
+            espaces, apostrophes ou tirets.</span>
+        </div>
+      </div>
+
+      <hr>
+      <h6>Les informations suivantes me permettent de vous contacter.</h6>
+
+      <div class="form-group">
+        <label for="lastName">Nom</label>
+        <input type="text" id="lastName" formControlName="lastName" required placeholder="Votre nom de famille">
+        <div class="error-message" *ngIf="giftCardForm.get('lastName')?.touched && giftCardForm.get('lastName')?.value">
+          <span *ngIf="giftCardForm.get('lastName')?.errors?.['required']">Le nom est requis.</span>
+          <span *ngIf="giftCardForm.get('lastName')?.errors?.['minlength']">Le nom doit contenir au moins 2
+            caractères.</span>
+          <span *ngIf="giftCardForm.get('toName')?.errors?.['maxlength']">Le nom ne doit pas dépasser 50
+            caractères.</span>
+          <span *ngIf="giftCardForm.get('lastName')?.errors?.['pattern']">Le nom ne doit contenir que des lettres,
+            espaces, apostrophes ou tirets.</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="firstName">Prénom</label>
+        <input type="text" id="firstName" formControlName="firstName" required placeholder="Votre prénom">
+        <div class="error-message"
+          *ngIf="giftCardForm.get('firstName')?.touched && giftCardForm.get('firstName')?.value">
+          <span *ngIf="giftCardForm.get('firstName')?.errors?.['required']">Le prénom est requis.</span>
+          <span *ngIf="giftCardForm.get('firstName')?.errors?.['minlength']">Le prénom doit contenir au moins 2
+            caractères.</span>
+          <span *ngIf="giftCardForm.get('toName')?.errors?.['maxlength']">Le nom ne doit pas dépasser 50
+            caractères.</span>
+          <span *ngIf="giftCardForm.get('firstName')?.errors?.['pattern']">Le prénom ne doit contenir que des lettres,
+            espaces, apostrophes ou tirets.</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Adresse email</label>
+        <input type="email" id="email" formControlName="email" required placeholder="Votre adresse email">
+        <div class="error-message" *ngIf="giftCardForm.get('email')?.touched && giftCardForm.get('email')?.value">
+          <span *ngIf="giftCardForm.get('email')?.errors?.['required']">L'adresse email est requise.</span>
+          <span *ngIf="giftCardForm.get('email')?.errors?.['email']">L'adresse email n'est pas valide.</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="phone">Numéro de téléphone</label>
+        <input type="tel" id="phone" formControlName="phone" required placeholder="Votre numéro de téléphone">
+        <div class="error-message" *ngIf="giftCardForm.get('phone')?.touched && giftCardForm.get('phone')?.value">
+          <span *ngIf="giftCardForm.get('phone')?.errors?.['required']">Le numéro de téléphone est requis.</span>
+          <span *ngIf="giftCardForm.get('phone')?.errors?.['pattern']">Le numéro de téléphone n'est pas valide.</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="adress">Numéro et libellé de la voie</label>
+        <input type="text" id="adress" formControlName="adress" required placeholder="Ex : 12 rue de la Paix">
+        <div class="error-message" *ngIf="giftCardForm.get('adress')?.touched && giftCardForm.get('adress')?.value">
+          <span *ngIf="giftCardForm.get('adress')?.errors?.['required']">L'adresse est requise.</span>
+          <span *ngIf="giftCardForm.get('adress')?.errors?.['minlength']">L'adresse doit contenir au moins 5
+            caractères.</span>
+          <span *ngIf="giftCardForm.get('adress')?.errors?.['maxlength']">L'adresse ne doit pas dépasser 100
+            caractères.</span>
+          <span *ngIf="giftCardForm.get('adress')?.errors?.['pattern']">L'adresse ne doit contenir que des lettres,
+            chiffres, espaces, apostrophes ou tirets.</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="city-group">
+          <div>
+            <label for="postalCode">Code postal</label>
+            <input type="text" id="postalCode" formControlName="postalCode" required placeholder="67xxx">
+          </div>
+          <div>
+            <label for="city">Ville</label>
+            <input type="text" id="city" formControlName="city" required placeholder="Votre ville">
+          </div>
+        </div>
+        <div class="error-message"
+          *ngIf="giftCardForm.get('postalCode')?.touched && giftCardForm.get('postalCode')?.value && giftCardForm.get('city')?.touched && giftCardForm.get('city')?.value">
+          <span *ngIf="giftCardForm.get('postalCode')?.errors?.['required']">Le code postal est requis.</span>
+          <span *ngIf="giftCardForm.get('postalCode')?.errors?.['pattern']">Le code postal n'est pas valide.</span>
+          <span *ngIf="giftCardForm.get('city')?.errors?.['required']">La ville est requise.</span>
+          <span *ngIf="giftCardForm.get('city')?.errors?.['pattern']">La ville n'est pas valide.</span>
+          <span *ngIf="giftCardForm.get('city')?.errors?.['minlength']">Le nom de la ville doit contenir au moins 2
+            caractères.</span>
+          <span *ngIf="giftCardForm.get('city')?.errors?.['maxlength']">Le nom de la ville ne doit pas dépasser 50
+            caractères.</span>
+        </div>
+
+      </div>
+
+      <div *ngIf="showCookieError" class="alert">
+        Merci de recharger la page et d'accepter les cookies pour envoyer le formulaire.
+      </div>
+
+      <button class="submit-btn" type="submit" [disabled]="giftCardForm.invalid">Envoyer</button>
+
+    </form>
+
+  </div>
+
+</main>

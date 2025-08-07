@@ -1,0 +1,104 @@
+<main>
+
+  <!-- Bandeau-titre -->
+  <div class="header-image-container container-fluid">
+    <h1>Me contacter</h1>
+  </div>
+
+  <!-- Informations de contact -->
+  <h2>Informations et contact</h2>
+  <div class="container">
+    <p class="contact-text">Pour toute question, demande d'information ou réservation, n'hésitez pas à me contacter par téléphone, les réseaux sociaux ou via le formulaire ci-dessous.</p>
+
+    <app-contact-banner></app-contact-banner>
+  </div>
+
+  <!-- Formulaire de contact -->
+  <div class="form-container container">
+    <h2>Envoyer un message</h2>
+
+    <div class="popup-message success" *ngIf="messageEnvoye">
+      ✅ Votre message a bien été envoyé !
+    </div>
+    
+    <div class="popup-message error" *ngIf="messageErreur">
+      ❌ Une erreur est survenue lors de l'envoi du message.
+    </div>
+
+    <form class="contactForm" (ngSubmit)="onSubmit()" [formGroup]="contactForm">
+
+      <div class="form-group">
+        <label for="subject">Objet de votre demande</label>
+        <select id="subject" formControlName="subject" required>
+          <option value="" disabled selected>Choisissez un objet</option>
+          <option value="Demande d'informations">Obtenir des informations</option>
+          <option value="Demande de réservation">Faire une demande de réservation</option>
+          <option value="Déclarer une erreur sur le site">Problème sur le site</option>
+          <option value="Autre demande">Autre</option>
+        </select>
+        <div class="error-message" *ngIf="contactForm.get('lastname')?.valid && contactForm.get('subject')?.invalid && (contactForm.get('subject')?.value === '')">
+          <span *ngIf="contactForm.get('subject')?.errors?.['required']">Merci de faire un choix</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="lastname">Nom</label>
+        <input type="text" id="lastname" formControlName="lastname" required placeholder="Votre nom de famille">
+        <div class="error-message" *ngIf="contactForm.get('lastname')?.touched && contactForm.get('lastname')?.value">
+          <span *ngIf="contactForm.get('lastname')?.errors?.['required']">Le nom est requis.</span>
+          <span *ngIf="contactForm.get('lastname')?.errors?.['minlength']">Le nom doit contenir au moins 2 caractères.</span>
+          <span *ngIf="contactForm.get('lastname')?.errors?.['maxlength']">Le nom ne doit pas dépasser 50 caractères.</span>
+          <span *ngIf="contactForm.get('lastname')?.errors?.['pattern']">Le nom ne doit contenir que des lettres, espaces, apostrophes ou tirets.</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="firstname">Prénom</label>
+        <input type="text" id="firstname" formControlName="firstname" required placeholder="Votre prénom">
+        <div class="error-message" *ngIf="contactForm.get('firstname')?.touched && contactForm.get('firstname')?.value">
+          <span *ngIf="contactForm.get('firstname')?.errors?.['required']">Le prénom est requis.</span>
+          <span *ngIf="contactForm.get('firstname')?.errors?.['minlength']">Le prénom doit contenir au moins 2 caractères.</span>
+          <span *ngIf="contactForm.get('firstname')?.errors?.['maxlength']">Le prénom ne doit pas dépasser 50 caractères.</span>
+          <span *ngIf="contactForm.get('firstname')?.errors?.['pattern']">Le prénom ne doit contenir que des lettres, espaces, apostrophes ou tirets.</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Adresse email</label>
+        <input type="email" id="email" formControlName="email" required placeholder="Votre adresse email">
+        <div class="error-message" *ngIf="contactForm.get('email')?.touched && contactForm.get('email')?.value">
+          <span *ngIf="contactForm.get('email')?.errors?.['required']">L'adresse email est requise.</span>
+          <span *ngIf="contactForm.get('email')?.errors?.['email']">L'adresse email n'est pas valide.</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="phone">Numéro de téléphone</label>
+        <input type="tel" id="phone" formControlName="phone" required placeholder="Votre numéro de téléphone">
+        <div class="error-message" *ngIf="contactForm.get('phone')?.touched && contactForm.get('phone')?.value">
+          <span *ngIf="contactForm.get('phone')?.errors?.['required']">Le numéro de téléphone est requis.</span>
+          <span *ngIf="contactForm.get('phone')?.errors?.['pattern']">Le numéro de téléphone n'est pas valide.</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="message">Message (max. 500 caractères)</label>
+        <textarea id="message" formControlName="message" required placeholder="Votre message ..."></textarea>
+        <div class="error-message" *ngIf="contactForm.get('message')?.touched && contactForm.get('message')?.value">
+          <span *ngIf="contactForm.get('message')?.errors?.['required']">Le message est requis.</span>          
+          <span *ngIf="contactForm.get('message')?.errors?.['minlength']">Le message doit au minimum faire 30 caractères.</span>
+          <span *ngIf="contactForm.get('message')?.errors?.['maxlength']">Le message ne doit pas dépasser 500 caractères.</span>
+        </div>
+      </div>
+
+      <div *ngIf="showCookieError" class="alert">
+        Merci de recharger la page et d'accepter les cookies pour envoyer le formulaire.
+      </div>
+
+      <button class="submit-btn" type="submit" [disabled]="contactForm.invalid">Envoyer</button>
+
+    </form>
+
+  </div>
+
+</main>

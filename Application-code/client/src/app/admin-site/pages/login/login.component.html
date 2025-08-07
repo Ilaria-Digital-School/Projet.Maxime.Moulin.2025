@@ -1,0 +1,25 @@
+<div class="login-container">
+
+  <img class="login-logo" src={{logoUrl}} alt="Logo" />
+
+  <h2>Portail administrateur</h2>
+
+  <form class="login-form" (ngSubmit)="onSubmit()" [formGroup]="loginForm">
+    <input type="email" formControlName="email" name="email" placeholder="Email" required />
+    <div class="error-message" *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.value">
+      <span *ngIf="loginForm.get('email')?.errors?.['required']">L'adresse email est requise.</span>
+      <span *ngIf="loginForm.get('email')?.errors?.['email']">L'adresse email n'est pas valide.</span>
+    </div>
+
+    <input type="password" formControlName="password" name="password" placeholder="Mot de passe" required />
+    <div class="error-message" *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.value">
+      <span *ngIf="loginForm.get('password')?.errors?.['required']">Le mot de passe est requis.</span>
+      <span *ngIf="loginForm.get('password')?.errors?.['minlength']">Le mot de passe doit contenir au moins 6
+        caractères.</span>
+    </div>
+
+    <button type="submit" [disabled]="loginForm.invalid">Se connecter</button>
+    <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
+  </form>
+
+</div>

@@ -1,0 +1,11 @@
+<div class="slide-container">
+  <div class="prev-review-btn" (click)="plusSlides(-1)">&#10094;</div>
+
+  <div class="slider">
+      <h3 *ngIf="reviews[slideIndex]">{{ reviews[slideIndex].massageName }}</h3>
+      <div class="client-text" *ngIf="reviews[slideIndex]">{{ reviews[slideIndex].reviewText }}</div>
+      <div class="client-name" *ngIf="reviews[slideIndex]">{{ reviews[slideIndex].reviewAuthor }}</div>
+  </div>
+
+  <div class="next-review-btn" (click)="plusSlides(1)">&#10095;</div>
+</div>

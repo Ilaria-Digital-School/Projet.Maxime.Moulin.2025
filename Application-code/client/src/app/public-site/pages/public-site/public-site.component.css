@@ -1,0 +1,32 @@
+/* La page occupe toute la hauteur de la fenêtre */
+html,
+body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Conteneur principal */
+.page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - var(--height-nav));
+  /* Assure que la page occupe toute la hauteur de la fenêtre */
+  margin-top: var(--height-nav);
+}
+
+/* Contenu principal */
+.content-wrap {
+  flex: 1;
+  /* Prend tout l'espace disponible pour pousser le footer vers le bas */
+}
+
+/* Footer */
+footer {
+  background-color: #f9f9f9;
+  text-align: center;
+  padding: 10px 20px;
+  border-top: 1px solid #ddd;
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+}

@@ -1,0 +1,61 @@
+== Requêtes SQL pour la création de la base de données "GESTION DE CONTENU" ==
+=== Requêtes de création des tables ===
+
+CREATE TABLE massages (
+  massageID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  category VARCHAR(20) NOT NULL,
+  massageName VARCHAR(255) NOT NULL,
+  tags VARCHAR(255),
+  target VARCHAR(255),
+  description MEDIUMTEXT NOT NULL,
+  content MEDIUMTEXT NOT NULL,
+  imageUrl VARCHAR(255) NOT NULL UNIQUE,
+  isActive ENUM('true', 'false') DEFAULT true
+) ENGINE = InnoDB;
+
+CREATE TABLE reviews (
+  reviewID INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+  massageID INT NOT NULL,
+  reviewText MEDIUMTEXT NOT NULL,
+  reviewAuthor VARCHAR(25) NOT NULL,
+  creationDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  isActive ENUM('true','false') DEFAULT true,
+  FOREIGN KEY (massageID) REFERENCES massages(massageID)
+) ENGINE = InnoDB;
+
+CREATE TABLE programs (
+  programID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  programName VARCHAR(255) NOT NULL,
+  isActive ENUM('true','false') DEFAULT true
+) ENGINE = InnoDB;
+
+CREATE TABLE programs_massage (
+  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  programID INT NOT NULL,
+  massageID INT,
+  altMassage VARCHAR(255),
+  massageOrder INT DEFAULT 1,
+  quantity INT DEFAULT 1,
+  FOREIGN KEY (massageID) REFERENCES massages(massageID),
+  FOREIGN KEY (programID) REFERENCES programs(programID)
+) ENGINE = InnoDB;
+
+CREATE TABLE users (
+ id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+ email VARCHAR(255) UNIQUE NOT NULL,
+ password_hash VARCHAR(255) UNIQUE NOT NULL,
+ created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+ role ENUM(1,2) DEFAULT 2 // 1 pour admin, 2 pour publique
+)
+
+=== Requête type d'insertion de contenu dans les tables ===
+==== Table massages ====
+INSERT INTO massages (category, massageName, tags, description, content, imageUrl)
+VALUES (
+  'massage',
+  'Californien',
+  'Relaxation & enveloppement',
+  'Le massage californien allie des manœuvres longues, fluides, englobantes et réconfortantes pour favoriser le lâcher-prise. Il s’effectue sur l’ensemble du corps et amène vers une relaxation profonde qui permet de relâcher les tensions.',
+  'Les techniques incluent des pétrissages, du drainage, des pressions glissées aidant à soulager le stress et améliorer la circulation sanguine et lymphatique. Parfaitement adapté pour un premier massage.\nTechnique complémentaire à combiner : pierres chaudes.',
+  '/images/pageMassages/massage-californien.png'
+)

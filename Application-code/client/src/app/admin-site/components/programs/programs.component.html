@@ -1,0 +1,54 @@
+<div class="content-container container">
+
+  <div class="notice-container">
+    <h1>Notice</h1>
+    <p>Le tableau suivant contient tous les programmes de massages qui sont affichés sur la page "Massages" sur le site
+      public.</p>
+    <p>Il est possible d'ajouter, de modifier ou supprimer un avis de la liste.</p>
+  </div>
+
+  <div class="add-btn-container">
+    <button class="green-btn" [routerLink]="['./new']">Ajouter un nouveau programme</button>
+  </div>
+
+  <hr>
+
+  <div class="item-container" *ngFor="let program of groupedPrograms">
+
+    <div class="item-header">
+
+      <div class="item-title">
+        <h5>Programme {{ program.programName }}</h5>
+        <span *ngIf="program.newPrice != null">Prix modifié : {{ program.newPrice }}€</span>
+      </div>
+
+      <div class="item-actions">
+        <button class="blue-btn" [routerLink]="[`./edit/${program.programID}`]">Modifier</button>
+      </div>
+
+      <div class="item-actions">
+        <button class="red-btn" (click)="openConfirmModal(program.programID)">Supprimer</button>
+      </div>
+    </div>
+
+    <div>
+      <ul>
+        <li *ngFor="let massage of program.massages">
+          {{ massage.massageName || massage.altMassage }} x{{ massage.quantity }}
+        </li>
+      </ul>
+    </div>   
+
+  </div>
+
+    <div class="modal-overlay" *ngIf="showModal">
+    <div class="modal-box">
+      <p>Êtes-vous sûr de vouloir supprimer ce programme ?</p>
+      <div class="modal-buttons">
+        <button class="red-btn" (click)="onConfirmDelete()">Confirmer</button>
+        <button class="grey-btn" (click)="onCancelDelete()">Annuler</button>
+      </div>
+    </div>
+  </div>
+
+</div>

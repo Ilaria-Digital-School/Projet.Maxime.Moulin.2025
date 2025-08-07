@@ -1,0 +1,27 @@
+<div class="tabs-container" *ngIf="tabs[activeTabIndex]">
+  <div class="tabs-container-row">
+    <div class="tabs-list">
+      <button *ngFor="let tab of tabs; let i = index" [class.active]="i === activeTabIndex"
+        (click)="setActiveTab(i)">{{ tab.massageName }}
+      </button>
+    </div>
+
+    <div class="tabs-soins-image">
+      <img loading="lazy" [src]="tabs[activeTabIndex].imageUrl" [alt]="tabs[activeTabIndex].massageName">
+    </div>
+
+    <div class="tabs-soins-content">
+      <h3>{{ tabs[activeTabIndex].massageName }}</h3>
+      <h5>{{ tabs[activeTabIndex].tags }}</h5>
+      <h6 *ngIf="tabs[activeTabIndex].target">Zones ciblées : {{ tabs[activeTabIndex].target }}</h6>
+      <p style="white-space: pre-line;">{{ tabs[activeTabIndex].description }}</p>
+      <button class="btn-afficher" (click)="afficher()">{{ getAfficherButtonText() }}</button>
+    </div>
+
+  </div>
+
+  <div class="afficher-plus" [class.open]="afficherPlusBool">
+    <hr>
+    <p>{{ tabs[activeTabIndex].content }}</p>
+  </div>
+</div>

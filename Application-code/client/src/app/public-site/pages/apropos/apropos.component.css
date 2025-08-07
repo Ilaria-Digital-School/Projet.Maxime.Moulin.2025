@@ -1,0 +1,117 @@
+/* MAIN */
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    row-gap:20px;
+}
+
+/* HEADER */
+
+.header-image-container {
+    background-image: url(/images/pageAPropos/lilas-papillon.webp);
+    background-size: cover;
+    background-position: 50% 50%;
+}
+
+/* CORPS DE TEXTE */
+.text-container {
+    padding: 0 20px;
+    margin: 30px auto;
+}
+
+.text-container h2 {
+    color: var(--theme-color-green);
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.text-container h3 {
+    color: var(--theme-color-green);
+    margin-bottom: 5px;
+    margin-top: 30px;
+}
+
+.left-image,
+.right-image {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    border-radius: 10px;    
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+}
+
+.left-image {
+    float: left;    
+    margin-right: 40px;
+}
+
+.right-image {
+    float: right;
+    margin-left: 40px;
+}
+
+/* IMAGE GRID */
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30%, 1fr));
+    gap: 20px;
+    margin: 20px auto;
+  }
+  
+  .image-item {
+    overflow: hidden;
+    border-radius: 10px; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    min-height: 250px;
+  }
+  
+  .image-item img {
+    width: 100%; 
+    height: 100%;
+    display: block;
+    object-fit: cover;
+  }
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+    .left-image,
+    .right-image {
+        float: none;
+        margin: 0 auto;
+        display: block;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    .right-image {
+        max-width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .text-container h3 {
+        text-align: center;
+    }
+
+    .image-grid {
+        grid-template-columns: repeat(auto-fit, minmax(40%, 1fr));
+    }
+}
+
+@media screen and (max-width: 576px) {
+
+    .text-container h3 {
+        text-align: center;
+    }
+
+    .text-container p {
+        font-size: 1rem;
+    }    
+}

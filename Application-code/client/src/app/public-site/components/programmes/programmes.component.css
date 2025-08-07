@@ -1,0 +1,78 @@
+.programs-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.programs-card:nth-child(even) {
+    background-color: var(--theme-color-green-light);
+}
+
+.programs-card:nth-child(odd) {
+    background-color: var(--theme-color-white);
+    color: var(--theme-color-green);
+    border: 2px solid var(--theme-color-green);
+}
+
+.programs-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+
+    margin: 10px;
+    padding: 10px;
+
+    border-radius: 10px;
+    text-align: center;
+}
+
+.programs-card-title {
+    margin-top: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    margin-bottom: 10px;
+}
+
+.programs-card-title h3 {
+    font-size: 1.6rem;
+}
+
+.programs-card ul {
+    text-align: left;
+    margin: 0 0 20px;
+}
+
+.programs-card ul li {
+    margin: 5px 0;
+}
+
+.programs-btn {
+    margin-top: auto;
+    margin-bottom: 10px;
+}
+
+.programs-new-price {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--theme-color-green);
+}
+
+.programs-old-price {
+    font-size: 1.2rem;
+    text-decoration: line-through;
+    color: var(--theme-color-grey);
+}
+
+@media screen and (max-width: 768px) {
+    .programs-card {
+        width: 75%;
+        flex-direction: column;
+    }    
+}

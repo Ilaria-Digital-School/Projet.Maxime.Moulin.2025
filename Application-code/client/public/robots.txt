@@ -1,0 +1,9 @@
+User-agent: *
+Disallow: /api/
+Disallow: /server.js
+Disallow: /favicon.ico
+Disallow: /robots.txt
+
+Allow: /
+
+Sitemap: https://aucoeurdeslilas.com/sitemap.xml

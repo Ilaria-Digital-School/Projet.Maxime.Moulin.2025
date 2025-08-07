@@ -1,0 +1,14 @@
+<div>
+  ⏳ Temps restant : <strong>{{ remainingTime }}</strong>
+</div>
+
+<!-- Modale d'avertissement pour le rafraîchissement du token -->
+<div class="modal-overlay" *ngIf="showDialog">
+  <div class="modal-box">
+    <p>⚠️ Votre session expire bientôt. Souhaitez-vous la prolonger ?</p>
+    <div class="modal-buttons">
+      <button (click)="confirmRefresh()" class="blue-btn">Oui, prolonger</button>
+      <button (click)="cancelDialog()" class="red-btn">Non</button>
+    </div>
+  </div>
+</div>

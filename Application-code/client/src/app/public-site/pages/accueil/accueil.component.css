@@ -1,0 +1,733 @@
+/* MAIN */
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.index-header {
+    min-height: 100vh;
+    padding: 0;
+
+    background-image: url(/images/pageAccueil/header-bg-image.webp);
+    background-color: var(--theme-color-purple-light);
+    background-repeat: no-repeat;
+    background-position: 100% 100%;
+    background-size: cover;
+    background-attachment: scroll;
+    background-clip: padding-box;
+    image-rendering: auto;
+}
+
+.site-header-container {
+    height: 100vh;
+    align-content: center;
+}
+
+.site-header-container-content {
+    max-width: min(100%, 1200px);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 60px;
+
+    margin-left: auto !important;
+    margin-right: auto !important;
+
+    padding: 20px;
+    border-radius: 50px;
+
+    background-color: var(--theme-color-purple-head);
+
+    color: var(--theme-color-white);
+}
+
+.bg-disk {
+    width: max(50%, 375px);
+    border-radius: 50%;
+    background-color: var(--theme-color-white);
+    opacity: 0.85;
+}
+
+.logo {
+    width: 100%;
+    max-width: 375px;
+}
+
+/* SHT = Site Header Text / Bloc texte à côté du logo */
+.site-header-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;    
+}
+
+.sht-prefix-titre {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 20px !important; 
+    font-family: "Funnel Display", serif;
+    font-size: 1.25rem; 
+}
+
+.sht-titre {
+    margin-bottom: 20px;
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+.sht-desc {
+    margin-bottom: 25px;
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+
+    font-size: 1.4rem;
+    line-height: 1.2em;
+}
+
+.sht-btn {
+    color: var(--theme-color-purple);
+    background-color: var(--theme-color-white);
+    border-width: 0px;
+    border-radius: 10px;    
+
+    margin: auto;
+    padding: 0.5rem 1rem;
+
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sht-btn span {
+    text-transform: uppercase;
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.sht-btn svg {
+    height: 22px;
+    width: 18px;
+    line-height: 12px;
+}
+
+.sht-btn:hover {
+    transition-duration: 0.6s;
+    background-color: var(--theme-color-purple);
+    color: var(--theme-color-white);
+}
+
+.sht-btn:hover svg {
+    transition-duration: 0.6s;
+    fill: var(--theme-color-white);
+}
+
+.ms1-container,
+.ms2-container,
+.ms3-container,
+.ms4-container,
+.ms5-container,
+.ms6-container {
+    text-align: center;
+
+    padding-top: 100px;
+    padding-bottom: 100px;
+
+    color: var(--theme-color-black);
+}
+
+.ms1-container:after,
+.ms2-main-container:after,
+header:after {
+    margin-bottom: 20px;
+
+    clear: both;
+    content: "";
+    display: block;
+}
+
+.ms-link:hover {
+    color: var(--theme-color-purple);
+    font-weight: 600;
+    background-color: var(--theme-color-white);
+    transition-duration: 0.8s;
+}
+
+/* MAIN SECTION 1 (ms1) */
+
+.ms1-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.ms1-img {
+    min-height: 650px;
+    box-shadow: 0px 30px 100px -48px rgba(0, 0, 0, 0.24);
+
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 16px !important;
+    margin-bottom: 32px !important;
+
+    overflow: visible;
+    order: initial;
+
+    border-color: inherit;
+
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: cover;
+    background-attachment: scroll;
+    background-image: url(/images/pageAccueil/fleurdelilas-ms1.webp);
+    background-clip: padding-box;
+    
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+    row-gap: 20px;
+    column-gap: 20px;
+
+    border-radius: 50px;
+}
+
+.ms1-desc {
+    display: flex;
+    flex-direction: row;
+
+    vertical-align: baseline;
+    justify-content: center;
+    column-gap: 5%;
+    align-items: flex-start;
+
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.ms1-desc-item {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+
+.ms1-desc-item p {
+    text-align: left;
+}
+
+.ms1-desc-item-title {
+    display: flex;
+    flex-direction: row;
+    column-gap: 10px;
+    justify-content: center;
+    align-items: center;
+    height: 35px;
+}
+
+.ms1-desc-icon {
+    fill: var(--theme-color-purple-light);
+    height: 2rem;
+    float: left;
+}
+
+/* MAIN SECTION 2 (ms2) */
+.ms2-pres-container {
+    display: flex;
+    margin-bottom: 150px;
+    padding: 0;
+    flex-direction: row;
+    justify-content: flex-end;    
+}
+
+.ms2-pres-left {
+    width: 40%;
+    padding: 30px 50px 40px 60px;
+    min-height: 450px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    row-gap: 20px;
+    text-align: left;
+}
+
+.ms2-section-title {
+    color: var(--theme-color-green);
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.ms2-pres-left p {
+    text-align: left;
+}
+
+.ms2-pres-right {
+    height: auto;
+    width: 50%;
+    background-image: url(/images/pageAccueil/ms2-masseuse.webp);
+    background-repeat: no-repeat;
+    background-position: 50% 20%;
+    background-size:cover;
+    background-attachment: scroll;    
+    border-bottom-left-radius: 50px;
+    border-top-left-radius: 50px;
+}
+
+.ms2-xp-container {
+    display: flex;
+    margin-bottom: 100px;
+    padding: 0;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.ms2-xp-left {
+    height: auto;
+    width: 50%;
+    background-image: url(/images/pageAccueil/ms2-massage.webp);
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: cover;
+    background-attachment: scroll;
+    background-clip: padding-box;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;    
+    position: relative;
+}
+
+.ms2-xp-left h2 {
+    position: absolute;
+    top: 5%;
+    right: 7%;
+    color: var(--theme-color-white);
+    font-size: 5rem;
+    text-align: right;
+}
+
+.ms2-xp-left h3 {
+    position: absolute;
+    top: 25%;
+    right: 3%;
+    color: var(--theme-color-white);
+}
+
+.ms2-xp-right {
+    width: 40%;
+    padding: 20px 60px 20px 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    row-gap: 20px;
+    text-align: left;
+}
+
+.ms2-right-title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.ms2-right-title-nr {
+    color: var(--theme-color-green);
+    font-size: 2rem;
+    font-weight: 600;
+    margin-right: 10px;
+    padding-right: 20px;
+
+    border-right: 2px solid var(--theme-color-green);
+}
+
+.ms2-right-title-text {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.ms2-btn {
+    width:fit-content;
+    margin: auto;
+
+    color: var(--theme-color-white);
+    border: 2px solid var(--theme-color-purple);
+    border-radius: 20px;
+    padding: 0.5rem 1.1rem;
+
+    font-weight: bold;
+    text-transform: uppercase;
+
+    background: linear-gradient(to right, var(--theme-color-purple) 50%, var(--theme-color-white) 50%) left;
+    background-size: 200%;
+    transition: 0.8s ease-out;
+    text-decoration: none !important;
+}
+
+.ms2-btn:hover {
+    background-position: right;
+    color: var(--theme-color-purple);    
+}
+
+/* MAIN SECTION 3 (ms3) */
+
+.ms3-container {
+    display: flex;
+    margin-bottom: 50px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    row-gap: 20px;
+}
+
+.ms-btn {
+    color: var(--theme-color-white);
+    background-color: var(--theme-color-purple);
+    border-top-width: 2px;
+    border-left-width: 2px;
+    border-right-width: 2px;
+    border-bottom-width: 2px;
+    border-radius: 10px;
+    border-color: var(--theme-color-white);
+    border-style: solid;
+    padding: 8px 15px;
+
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ms-btn span {
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+.ms-btn svg {
+    height: 22px;
+    width: 18px;
+    line-height: 12px;
+    margin-left: 10px;
+    fill: var(--theme-color-white);
+}
+
+.ms-btn:hover {
+    transition-duration: 0.5s;
+    background-color: var(--theme-color-white);
+    color: var(--theme-color-purple);
+    border-color: var(--theme-color-purple);
+}
+
+.ms-btn:hover svg {
+    transition-duration: 0.5s;
+    fill: var(--theme-color-purple);
+}
+
+/* MAIN SECTION 4 (ms4) - Vignettes */
+
+.ms4-main-container {
+    justify-content: center;
+    align-items: center;
+
+    background-image: url(/images/pageAccueil/huiledemassage.webp);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+    padding-top: 20px;
+    padding-bottom: 20px;
+
+    box-shadow: 0px 0px 20px #00000070;
+}
+
+.ms4-title {
+    word-break: keep-all;
+    margin-bottom: 20px;
+
+    padding: 10px;
+    border-radius: 10px;
+
+    background-color: var(--theme-color-white-trans);
+}
+
+.ms4-thumb-row {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    column-gap: 20px;
+
+    justify-content: space-between;
+}
+
+.ms4-thumb {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    width: 50%;
+
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 0;
+    margin-left: 0;
+
+    padding-top: 10px;
+
+    border-radius: 10px;
+
+    background-color: var(--theme-color-white-trans);
+}
+
+.ms4-thumb hr {
+    width: 80%;
+    border-top-width: 2px;
+    border-top-color: #bebebe;
+    border-top-style: solid;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+
+.ms4-thumb-note {
+    font-weight: bold;
+    margin-top: auto;
+}
+
+.ms4-thumb-text {
+    text-align: center;
+    padding-left: 25px;
+    padding-right: 25px;
+    font-weight: 400;
+}
+
+.ms4-number {
+    color: var(--theme-color-green);
+    margin-bottom: 0px;
+}
+
+.ms4-btn {
+    margin-top: 30px;
+    margin-bottom: 0px;
+}
+
+/* MAIN SECTION 5 (ms5) - avis clients */
+
+.ms5-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 20px;
+
+    min-height: 500px;
+}
+
+.ms5-container hr {
+    width: 30%;
+    border-top-width: 2px;
+    border-top-color: var(--theme-color-green);
+    border-top-style: solid;
+    margin-bottom: 10px;
+    margin-top: 0px;
+}
+
+.ms5-icon svg {
+    color: var(--theme-color-green);
+    fill: var(--theme-color-green);
+
+    width: 40px;
+    height: 40px;
+}
+
+.ms5-title {
+    text-transform: uppercase;
+}
+
+/* MAIN SECTION 6 (ms6)*/
+.ms6-separator {
+    height: 400px;
+    background-image: url(/images/pageAccueil/ms6-head-image-lilas-en-fleur.webp);
+    
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+
+    box-shadow: 0px 0px 20px #00000070;
+}
+
+.ms6-container {
+    text-align: center;
+
+    padding-top: 20px;
+    padding-bottom: 20px;
+
+    color: var(--theme-color-green);
+}
+
+.ms6-title {
+    text-align: center;
+    color: var(--theme-color-green);
+    padding-bottom: 20px;
+}
+
+.ms6-prefix-titre {
+    font-size: 1.2rem;
+    text-align: center;
+    color: var(--theme-color-green);
+    text-transform: uppercase;
+    margin-top:10px;
+}
+
+/* Responsive max 992 px (large) */
+@media screen and (max-width: 992px) {
+
+    .site-header-container-content {
+        flex-direction: column;
+        row-gap: 20px;
+    }
+
+    .site-header-text {
+        text-align: center;
+    }
+
+    .site-header-container-content .sht-btn {
+        margin: auto;
+    }
+
+    .ms1-desc {
+        flex-direction: column;
+        column-gap: 0px;
+    }
+
+    .ms1-desc-item {
+        width: 100%;
+    }
+
+    .ms2-pres-left,
+    .ms2-xp-right {
+        width: 60%;
+    }
+
+    .ms4-thumb-row {
+        flex-direction: column;
+        row-gap: 20px;
+    }
+
+    .ms4-thumb {
+        width: 100%;
+    }
+
+    .ms5-container {
+        min-height: 700px;
+    }
+
+    .ms6-container {
+        flex-direction: column;
+        row-gap: 20px;
+    }
+
+    .ms6-container-column {
+        width: 100%;
+        margin-bottom: 40px;
+    }
+
+    .ms6-info {
+        font-size: 1.1rem;
+    }
+}
+
+/* Responsive max 768 px (medium) */
+@media screen and (max-width: 768px) {
+
+    .site-header-container {
+        height: auto;
+    }
+
+    .ms2-pres-container,
+    .ms2-xp-container {
+        margin-bottom: 40px;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;    
+    }
+
+    .ms2-pres-container {
+        flex-direction: column-reverse;
+    }
+
+    .ms2-pres-left,
+    .ms2-pres-right,
+    .ms2-xp-left,
+    .ms2-xp-right {
+        width: 100%;
+    }
+
+    .ms2-pres-right,
+    .ms2-xp-left {
+        height: 250px;
+        border-radius: 0px
+    }
+
+    .ms2-pres-left,
+    .ms2-xp-right {
+        margin-top: 20px;
+    }
+
+    .ms5-container {
+        min-height: 1000px;
+    }
+
+    .ms6-separator {
+        height: 300px;
+    }
+
+    .ms6-document-image {
+        display: none;
+    }
+}
+
+/* Responsive max 576 px (small) */
+@media screen and (max-width: 576px) {
+
+    .bg-disk {
+    width: max(50%, 250px);
+}
+
+.logo {
+    width: 100%;
+    max-width: 250px;
+}
+
+    .sht-titre {
+        display: none;
+    }
+
+    .sht-prefix-titre {
+    font-size: 2rem !important; 
+    }
+
+    .ms3-container {
+        margin-top: 20px;
+    }
+
+    .ms3-container h2,
+    .ms4-title h2,
+    .ms6-title h2 {
+        font-size: 3.5rem;
+        line-height: 4.5rem;
+    }
+
+    .ms3-container h3 {
+        font-size: 1.2rem;
+    }
+    
+    .ms6-prefix-titre {
+        font-size: 1.1rem;
+    }
+
+}

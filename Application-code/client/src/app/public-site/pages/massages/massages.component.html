@@ -1,0 +1,179 @@
+<main>
+
+  <!-- Bandeau-titre -->
+  <div class="header-image-container container-fluid">
+    <h1>Massages et soins</h1>
+  </div>
+
+  <!-- MS1 - Introduction & détails sur les massages -->
+  <div class="container massages-ms1-container">
+
+    <h2>A savoir avant votre massage</h2>
+
+    Veuillez noter que le massage bien-être est à but non thérapeutique et à caractère non sexuel.
+    <br>
+    De plus, dans certains cas de figure, le massage présente des contre-indications.
+    Je vous remercie de m’indiquer avant la prise de rendez-vous si vous êtes affectés de l’une de ces pathologies :
+
+    <ul>
+      <li>Troubles sanguins / inflammatoires ;</li>
+      <li>Déchirures musculaires ;</li>
+      <li>Tumeurs/métastases ;</li>
+      <li>Fièvre ;</li>
+      <li>Indigestion ;</li>
+      <li>Problème de peau : brûlure, plaies, éruption/affection cutanée ;</li>
+      <li>Psoriasis et eczéma : à m’indiquer car possibilité de massage si utilisation d’une huile neutre et de gestes
+        doux sur les zones concernées ;</li>
+      <li>Intervention chirurgicale de moins de 3 mois ;</li>
+      <li>Phlébite ;</li>
+      <li>Problème cardiaque, infarctus ou AVC datant de moins de 3 mois ;</li>
+      <li>Cancer sauf avis écrit du médecin ;</li>
+      <li>Traumatisme cervical.</li>
+    </ul>
+
+  </div>
+
+  <!-- Separateur -->
+  <div class="container-fluid ms1-separator" id="massages">
+  </div>
+
+  <!-- MS2 - Liste des massages -->
+  <div class="container massages-ms2-container">
+    <h2>Les différents massages</h2>
+
+    @defer {
+    <app-tabs-massages></app-tabs-massages> <!-- Composant Angular pour les onglets de massages avec chargement différé -->
+    }
+
+  </div>
+  <span id="soins"></span>
+  <hr>
+
+  <!-- MS3 - Liste des soins spécifiques -->
+  <div class="container soins-ms3-container">
+    <h2>Les soins spécifiques</h2>
+
+    @defer {
+    <app-tabs-soins></app-tabs-soins> <!-- Composant Angular pour les onglets de soins avec chargement différé -->
+    }
+
+  </div>
+  <span id="techniques"></span>
+  <hr>
+
+  <!-- MS4 - Techniques complémentaires -->
+  <div class="container techniques-ms4-container">
+    <h2>Les techniques complémentaires</h2>
+
+    <p>
+      Sur réservation - lors de la prise de rendez-vous - il est possible d’ajouter des techniques complémentaires aux
+      soins et massages, sans frais supplémentaires. <i style="font-size: 0.9rem;">(Uniquement possible pour les
+        prestations de 1h30 et de 2h.)</i>
+    </p>
+
+    <div class="ms4-content-container">
+      <div class="ms4-content-column">
+        <h3>Les pierres chaudes</h3>
+
+        <h5>Apposition de pierres de basalte chaudes sur le dos, les jambes, les bras, le ventre et utilisation des
+          pierres en effectuant des manœuvres glissées tout le long du corps.</h5>
+
+        <p>
+          La chaleur des pierres provoque une dilatation des vaisseaux, le métabolisme devient alors plus actif,
+          entrainant une détoxification par l’effet de la transpiration et une détente musculaire.
+          Le sang neuf active le système immunitaire en circulant et nettoie les toxines.
+        </p>
+
+        <p>
+          La chaleur apaise, réconforte et permet d’accéder très rapidement à un état de relaxation profonde. Elle
+          dénoue les nœuds et les tensions musculaires.
+          <br>
+          Cette technique est recommandée pour les personnes stressées et tendues. Elle agit sur les troubles liés au
+          stress, les insomnies mais également les courbatures.
+        </p>
+
+        <p>Attention : Ne convient pas aux femmes enceintes.
+        </p>
+
+        <img loading="lazy" src="/images/pageMassages/pierres-chaudes.webp" alt="Pierres chaudes">
+      </div>
+
+      <div class="ms4-content-column">
+        <h3>Les pierres semi-précieuses (lithothérapie)</h3>
+
+        <h5>Apposition de 7 pierres semi-précieuses sur les zones des 7 chakras.</h5>
+
+        <p>
+          Le système des chakras de base consiste en 7 chakras qui s’étendent de la base de la colonne vertébrale au
+          sommet du crâne.
+        </p>
+
+        <p>
+          Le soin aux pierres semi-précieuses permet d’apporter harmonie et reconnexion entre le corps et l’esprit.
+          Les 7 pierres se connectent chacune aux 7 chakras du corps qui sont tous reliés. Par cette forte connexion
+          spirituelle, le corps se connecte profondément à la terre et au ciel.
+        </p>
+
+        <p>
+          Cette technique peut être incluse lors d’un massage énergétique, notamment l’Abhyanga, le Shirotchampi ou
+          encore le Shiatsu, le Kobido ou le Foot Thaï.
+        </p>
+
+        <p>
+          Durant le temps de pose des pierres, qui dure environ 20 min, les mains et les pieds sont massés.
+        </p>
+
+        <img loading="lazy" src="/images/pageMassages/pierres-semi-précieuses.webp" alt="Pierres semi-précieuses">
+      </div>
+
+    </div>
+
+  </div>
+
+  <hr>
+
+  <!-- MS5 - Fin de séance -->
+  <div class="container tisane-ms5-container">
+    <h2>La tisane de fin de soin</h2>
+
+    <div class="ms5-content">
+      <img loading="lazy" src="/images/pageMassages/massage-tisane.webp" alt="Tisane de fin de soin">
+
+      <div>
+        <p>
+          A la fin de chaque massage ou soin, une tisane vous est offerte pour prolonger votre moment de détente. Le
+          mélange
+          d’herbes provenant de l’herboristerie - située à Obernai - est préparé à l’avance par mes soins en fonction de vos
+          problématiques que vous pouvez m’indiquer lors de la prise de rendez-vous.
+        </p>
+
+        <p>
+          N’hésitez pas à m’indiquer lors de la prise de rendez-vous si vous avez des allergies ou des plantes dont vous
+          n’appréciez pas le goût.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- Separateur -->
+  <div class="container-fluid ms5-separator" id="tarifs">
+  </div>
+
+  <!-- MS6 - Programmes et tarifs -->
+  <div class="container programmes-ms6-container" >    
+    <h2>Programmes et tarifs</h2>
+    <p>Les tarifs varient en fonction de la durée de la séance. Les programmes (sauf spécial <i>femme enceinte</i>) comprennent 6 séances et bénéficient d'une remise sur le coût total.</p>
+    
+    <app-grille-tarifs></app-grille-tarifs>
+
+    <hr>
+
+    @defer {
+    <app-programmes></app-programmes> <!-- Composant Angular pour les programmes de soins avec chargement différé -->
+    }
+    
+  </div>
+
+</main>

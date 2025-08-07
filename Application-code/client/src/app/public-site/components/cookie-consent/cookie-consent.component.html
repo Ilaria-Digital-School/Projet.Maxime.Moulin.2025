@@ -1,0 +1,10 @@
+<div *ngIf="!hasConsented" class="cookie-banner">
+  <p>
+    Ce site utilise des cookies tiers (Google reCAPTCHA) pour sécuriser les formulaires.
+    <br />
+    <a href="/privacy" target="_blank">En savoir plus</a>.
+  </p>
+  <button class="green-btn" (click)="acceptCookies()" style="margin-right: 10px;">Accepter</button>
+  <button class="purple-btn" (click)="refuseCookies()" style="margin-left: 10px;">Refuser</button>
+</div>
+

@@ -1,0 +1,90 @@
+<main>
+
+  <!-- Bandeau-titre -->
+  <div class="header-image-container container-fluid">
+    <h1>A propos de moi</h1>
+  </div>
+
+  <!-- Contenu principal -->
+  <div class="container text-container">
+    <h2>Bonjour et bienvenue à tous au sein du havre des lilas !</h2>
+
+    <img alt="Marie" src="/images/pageAPropos/a-propos-massage-1.webp" class="right-image">
+
+    <p>Je m'appelle Marie, j’ai {{ currentAge }} ans et je suis originaire d’Obernai.
+      Je suis passionnée par la connexion entre le corps et l’esprit.
+      Mon objectif de vie est de résoudre les problématiques physiques et psychiques par la méthode naturelle (trio :
+      massages, plantes, étirements).</p>
+
+    <h3>Mon parcours</h3>
+
+    <p>Après quelques années à découvrir le milieu de la gestion de patrimoine et de l’immobilier puis avoir conscientisé
+      que ce domaine n’était pas fait pour moi, j’ai fait le choix de me réorienter dans le domaine du massage bien-être.
+    </p>
+
+    <h3>Pourquoi le massage bien-être ?</h3>
+
+    <p>Le massage a toujours fait partie de ma vie : depuis toute petite, j’ai eu la chance d’être massée. Par la
+      suite, j'ai appris à masser également.
+      <br>
+      De par le savoir-faire que j’ai acquis au cours de mes années de pratique, je souhaite donner à tous ceux qui en
+      ont besoin une clé, une flèche pour se mettre en chemin sur le retour du mieux-être dans leur vie.
+    </p>
+
+    <h3>Une véritable passion</h3>
+
+    <p>En 2024, j’ai pris la décision de me mettre en quête de mon harmonie intérieure et j'ai pour cela choisi de suivre
+      une formation longue avec l’école Temana, spécialisée dans le massage bien-être.
+      <br>
+      Ce fut pour moi une réelle opportunité, l’occasion de me découvrir à travers l’autre, en donnant et en apprenant à
+      recevoir tout ce que l’on peut offrir au travers du toucher, de la main qui ne tend qu’à partager et enrichir
+      l’autre de son savoir.
+      <br>
+      J’ai suivi la formation du cursus professionnel RNCP pour obtenir le titre d’Intervenant Spa & Bien-Être, avec
+      réussite de l’examen à la clé.
+    </p>
+
+    <img loading="lazy" alt="Marie" src="/images/pageAPropos/a-propos-diplôme-rncp.webp" class="left-image">
+
+    <h3>Ce que j’aime dans mon métier</h3>
+
+    <p>Mon moment préféré, c’est lorsque je vois les traits de vos visages s’apaiser et se laisser aller à la paix
+      intérieure. Une déconnexion avec le monde extérieur s’installe et le lâcher-prise intervient.
+      Cet instant de paix est aussi apaisant pour vous que pour moi.
+      <br>
+      C’est l’un des plus grands plaisirs pour moi que de voir vos visages détendus et relâchés.
+      C’est l’un des moments où je me sens le plus vivante.
+    </p>
+
+    <h3>Ce que je souhaite vous apporter</h3>
+
+    <p>Apprendre et développer la capacité à apporter à l’autre cette sensation de légèreté, de sérénité, d’harmonie et
+      de volupté est tout ce que j’avais espéré découvrir en démarrant cette formation.
+      Celle-ci m’a donné les clés pour accéder au monde du mieux-être, que chacun tend à trouver.
+      Être en capacité de le donner aux autres est mon ultime satisfaction.
+      <br>
+      A l’issue de cette formation, j’espère pouvoir devenir un guide pour chacun souhaitant trouver le chemin de son
+      propre mieux-être et de la confiance en soi. C’est un nouveau chapitre de vie qui s’ouvre et je vous invite à prendre ce virage avec moi si vous souhaitez vous
+      mettre en chemin sur la quête de votre moi intérieur.
+    </p>
+
+  </div>
+
+  <!-- Bouton réservation -->
+  <div class="container" style="text-align: center;">
+    <button class="green-btn" [routerLink]='["/reservation"]'>Je réserve mon massage<span>&nbsp; &#10095;</span></button>
+  </div>
+
+  <!-- Modal brochure / carte -->
+  @defer {
+  <app-doc-modal></app-doc-modal>
+  }
+
+  <!-- Images de la galerie -->
+  <div class="container image-grid">
+    <div class="image-item" *ngFor="let image of images">
+      <img loading="lazy" [src]="image.src" [alt]="image.alt" />
+    </div>
+  </div>
+
+</main>
